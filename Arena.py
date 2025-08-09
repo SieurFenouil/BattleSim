@@ -2,39 +2,41 @@
 # This is everything combat
 # entities, combat, etc.
 
+import random
 import barracks
 
 class CombatEntity:
-  def __init__(self, template, team):
+  def __init__(self, template):
     self.template : barracks.FighterTemplate = template
-    self.team : int = team
+    self.team : int = 0
     self.alive : bool = True
     self.currentHP : int = 0
-    self.speedMeter : int = 0
+    self.speedMeter : float = 0
 
   def attack(self):
 
     # add parry, dodge, block, combo, retaliate
     return self.template.strength
 
-def fight_battle(brute1, brute2):
+# combat teams set up in barracks or arena level ?
+class CombatTeam:
+  def __init__(self):
+    self.unitList : list[CombatEntity] =[]
 
-  # Do 1 list of lists, each sublist is a team
-  UnitList = []
-  Team1List = []
-  Team2List = []
+  def addUnit(self, unit):
+    self.unitList.append(unit)
 
-  Unit1 = CombatEntity(brute1, 1)
-  UnitList.append(Unit1)
-  Team1List.append(Unit1)
 
-  Unit2 = CombatEntity(brute2, 2)
-  UnitList.append(Unit2)
-  Team2List.append(Unit2)
+def speed_sort(unitList : list[CombatEntity])
+  unitList.sort(key=lambda x: x.speedMeter, reverse=True)
 
+def fight_battle(Team1 : CombatTeam, Team2 : CombatTeam):
+
+  UnitList = Team1.unitList + Team2.unitList
+  
   battle_over = False
 
-  while(battle_over == True):
+  while(not battle_over):
 
     UnitsPlayingThisTurn = []
 
@@ -43,14 +45,18 @@ def fight_battle(brute1, brute2):
       if unit.speedMeter >= 100 :
         UnitsPlayingThisTurn.append(unit)
 
-    # Need to sort this list by speed meter values first
+    speed_sort(UnitsPlayingThisTurn)
+    
     for unit in UnitsPlayingThisTurn :
 
       # pick targets, do actions
 
-      if unit.team == team1 :
-        unit.attack(Team2[0]) # should actually pick target
+      if unit.team == 1 :
+        target = random.randint(0, len(Team2.unitList) - 1)
+        unit.attack(
+          Team2.unitList[target])
 
-      if unit.team == team2 :
-        unit.attack(Team1[0])
-
+      if unit.team == 2 :
+        target = random.randint(0, len(Team1.unitList) - 1)
+        unit.attack(
+          Team1.unitList[target])
