@@ -8,7 +8,7 @@ import barracks
 class CombatEntity:
   def __init__(self, template):
     self.template : barracks.FighterTemplate = template
-    self.team : CombatTeam
+    self.team : CombatTeam = CombatTeam()
     self.alive : bool = True
     self.current_hp : int = 0
     self.speed_meter : float = 0
@@ -52,19 +52,23 @@ def fight_battle(team1 : CombatTeam, team2 : CombatTeam):
     
     for unit in turn_setlist :
 
+      target = CombatEntity(barracks.FighterTemplate("dummy"))
+      # could have been killed by a previous unit in the turn_setlist
+      if unit.current_hp > 0 :
+        
       # pick targets, do actions
 
-      target_list = [ target for team in battle_setlist if team != unit.team for target in team]
+        target_list = [ target for team in battle_setlist if team != unit.team for target in team]
 
-      target = random.choice(target_list)
+        target = random.choice(target_list)
 
-      target.current_hp -= unit.attack()
+        target.current_hp -= unit.attack()
       if target.current_hp <= 0 :
         target.alive = False
  
-      unit.speed_meter = 0
+        unit.speed_meter = 0
     
-    surviving_units = [unit for unit in battle_setlist if unit.current_hp > 0]
+    surviving_units = [unit for team in battle_setlist for unit in team if unit.current_hp > 0]
 
     for team in battle_setlist :
       team = [unit for unit in surviving_units if unit.team == team]
