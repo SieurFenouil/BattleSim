@@ -2,6 +2,8 @@
 # This is everything combat
 # entities, combat, etc.
 
+#todo next - set up combat teams
+
 import random
 import barracks
 
