@@ -11,7 +11,7 @@ class FighterTemplate:
     self.strength : int = 1
     self.agility : int = 1
     self.speed : int = 1
-    self.maxHP : int = 40
+    self.max_hp : int = 40
 
   def create_fighter(self):
     upgrades_pool = 10
@@ -25,4 +25,4 @@ class FighterTemplate:
       elif stat == 3:
         self.speed += 1
       elif (stat == 4 or stat == 5):
-        self.maxHP += 10
+        self.max_hp += 10

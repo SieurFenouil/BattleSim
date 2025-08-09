@@ -1,7 +1,6 @@
-#!/usr/bin/env python3
-"""
-Auto Battler Game - Bare bones dev environment
-"""
+
+import barracks
+import arena
 
 def main():
     """Main entry point."""
