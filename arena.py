@@ -10,7 +10,7 @@ class CombatEntity:
     self.template : barracks.FighterTemplate = template
     self.team : CombatTeam = CombatTeam()
     self.alive : bool = True
-    self.current_hp : int = 0
+    self.current_hp : int = self.template.max_hp
     self.speed_meter : float = 0
 
   def attack(self):
@@ -51,8 +51,7 @@ def fight_battle(team1 : CombatTeam, team2 : CombatTeam):
     speed_sort(turn_setlist)
     
     for unit in turn_setlist :
-
-      target = CombatEntity(barracks.FighterTemplate("dummy"))
+      
       # could have been killed by a previous unit in the turn_setlist
       if unit.current_hp > 0 :
         
@@ -63,8 +62,8 @@ def fight_battle(team1 : CombatTeam, team2 : CombatTeam):
         target = random.choice(target_list)
 
         target.current_hp -= unit.attack()
-      if target.current_hp <= 0 :
-        target.alive = False
+        if target.current_hp <= 0 :
+          target.alive = False
  
         unit.speed_meter = 0
     
