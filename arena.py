@@ -31,16 +31,21 @@ def speed_sort(unit_list : list[CombatEntity]) :
   unit_list.sort(key=lambda x: x.speed_meter, reverse=True)
 
 def fight_battle(team1 : CombatTeam, team2 : CombatTeam):
-
-  battle_setlist = team1.unit_list + team2.unit_list
   
   battle_over = False
 
   while(not battle_over):
 
+    battle_setlist = team1.unit_list + team2.unit_list
     turn_setlist = []
+    surviving_units = []
 
     for unit in battle_setlist :
+      if unit.current_hp <= 0 :
+        unit.alive = False
+        if unit
+      
+      
       unit.speed_meter += unit.template.speed * 0.05
       if unit.speed_meter >= 100 :
         turn_setlist.append(unit)
@@ -52,11 +57,17 @@ def fight_battle(team1 : CombatTeam, team2 : CombatTeam):
       # pick targets, do actions
 
       if unit.team == 1 :
-        target = random.randint(0, len(team2.unit_list) - 1)
-        unit.attack(
-          team2.unit_list[target])
+        rand_n = random.randint(0, len(team2.unit_list) - 1)
+        target = team2.unit_list[rand_n]
 
       if unit.team == 2 :
-        target = random.randint(0, len(team1.unit_list) - 1)
-        unit.attack(
-          team1.unit_list[target])
+        rand_n = random.randint(0, len(team1.unit_list) - 1)
+        target = team1.unit_list[rand_n]
+
+      target.current_hp -= unit.attack()
+      if target.current_hp <= 0 :
+        target.alive = False
+ 
+      unit.speed_meter = 0
+    
+    surviving_units = [unit for unit in battle_setlist if unit.alive]
