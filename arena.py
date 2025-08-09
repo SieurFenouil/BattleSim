@@ -32,7 +32,7 @@ def speed_sort(unit_list : list[CombatEntity]) :
 
 def fight_battle(team1 : CombatTeam, team2 : CombatTeam):
 
-  battle_setlist = [ team1.unit_list, team2.unit_list]
+  battle_setlist = [ team1, team2]
   
   battle_over = False
 
@@ -42,7 +42,7 @@ def fight_battle(team1 : CombatTeam, team2 : CombatTeam):
     surviving_units = []
 
     for team in battle_setlist :
-      for unit in team :
+      for unit in team.unit_list :
       
         unit.speed_meter += unit.template.speed * 0.05
         if unit.speed_meter >= 100 :
@@ -58,7 +58,7 @@ def fight_battle(team1 : CombatTeam, team2 : CombatTeam):
         
       # pick targets, do actions
 
-        target_list = [ target for team in battle_setlist if team != unit.team for target in team]
+        target_list = [ target for team in battle_setlist if team != unit.team for target in team.unit_list]
 
         target = random.choice(target_list)
 
@@ -68,12 +68,12 @@ def fight_battle(team1 : CombatTeam, team2 : CombatTeam):
  
         unit.speed_meter = 0
     
-    surviving_units = [unit for team in battle_setlist for unit in team if unit.current_hp > 0]
+    surviving_units = [unit for team in battle_setlist for unit in team.unit_list if unit.current_hp > 0]
 
     for team in battle_setlist :
-      team = [unit for unit in surviving_units if unit.team == team]
+      team.unit_list = [unit for unit in surviving_units if unit.team == team]
 
-    battle_setlist = [ team for team in battle_setlist if team != []]
+    battle_setlist = [ team for team in battle_setlist if team.unit_list != []]
 
     if len(battle_setlist) == 1 :
       battle_over = True
