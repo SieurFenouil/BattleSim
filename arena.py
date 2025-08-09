@@ -27,12 +27,12 @@ class CombatTeam:
     self.unit_list.append(unit)
 
 
-def speed_sort(unitList : list[CombatEntity]) :
-  unitList.sort(key=lambda x: x.speed_meter, reverse=True)
+def speed_sort(unit_list : list[CombatEntity]) :
+  unit_list.sort(key=lambda x: x.speed_meter, reverse=True)
 
-def fight_battle(Team1 : CombatTeam, Team2 : CombatTeam):
+def fight_battle(team1 : CombatTeam, team2 : CombatTeam):
 
-  battle_setlist = Team1.unit_list + Team2.unit_list
+  battle_setlist = team1.unit_list + team2.unit_list
   
   battle_over = False
 
@@ -52,11 +52,11 @@ def fight_battle(Team1 : CombatTeam, Team2 : CombatTeam):
       # pick targets, do actions
 
       if unit.team == 1 :
-        target = random.randint(0, len(Team2.unit_list) - 1)
+        target = random.randint(0, len(team2.unit_list) - 1)
         unit.attack(
-          Team2.unit_list[target])
+          team2.unit_list[target])
 
       if unit.team == 2 :
-        target = random.randint(0, len(Team1.unit_list) - 1)
+        target = random.randint(0, len(team1.unit_list) - 1)
         unit.attack(
-          Team1.unit_list[target])
+          team1.unit_list[target])
