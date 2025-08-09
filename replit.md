@@ -6,7 +6,9 @@ A bare-bones console-based auto battler game foundation built in Python. This pr
 
 ## User Preferences
 
-Preferred communication style: Simple, everyday language.
+- **Communication style**: Simple, everyday language
+- **Development approach**: User handles all file changes and commits; agent provides reviews and guidance only
+- **Git workflow**: User maintains full control over commit history
 
 ## System Architecture
 
