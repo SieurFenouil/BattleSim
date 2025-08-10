@@ -1,13 +1,6 @@
 
-import app_code.root
-import app_code.barracks.barracks
-import app_code.arena.arena
-
-def main():
-    """Main entry point."""
-    print("Auto Battler - Dev Environment Ready")
-    print("Add your game logic here!")
-
+import app_code.root as root
 
 if __name__ == "__main__":
-    main()
+    root.init()
+    root.run()
