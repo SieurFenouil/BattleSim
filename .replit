@@ -9,27 +9,7 @@ runButton = "Project"
 [[workflows.workflow]]
 name = "Project"
 mode = "parallel"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "workflow.run"
-args = "Auto Battler Game"
-
-[[workflows.workflow.tasks]]
-task = "workflow.run"
-args = "auto_battler_console"
-
-[[workflows.workflow]]
-name = "Auto Battler Game"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "python main.py"
-
-[[workflows.workflow]]
-name = "auto_battler_console"
-author = "agent"
+author = "me"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
