@@ -5,7 +5,7 @@
 #todo next - set up combat teams
 
 import random
-import barracks
+import barracks.barracks as barracks
 
 class CombatEntity:
   def __init__(self, template):
@@ -29,9 +29,13 @@ class CombatTeam:
     self.unit_list.append(unit)
 
 
+######### functions ###################
+
+###
 def speed_sort(unit_list : list[CombatEntity]) :
   unit_list.sort(key=lambda x: x.speed_meter, reverse=True)
 
+###
 def fight_battle(team1 : CombatTeam, team2 : CombatTeam):
 
   battle_setlist = [ team1, team2]

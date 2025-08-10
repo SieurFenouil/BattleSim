@@ -1,6 +1,7 @@
 
-import barracks
-import arena
+import app_code.root
+import app_code.barracks.barracks
+import app_code.arena.arena
 
 def main():
     """Main entry point."""
