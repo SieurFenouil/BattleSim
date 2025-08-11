@@ -1,4 +1,5 @@
 
+import time
 from .game_engine import GameEngine
 
 class Root :
@@ -18,3 +19,5 @@ class Root :
       self.game.update_game_state()
       # refresh display
       self.game.refresh_display()
+
+      time.sleep(0.5)
