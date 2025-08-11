@@ -1,4 +1,4 @@
-from game_state import GameState
+from .game_state import GameState
 
 class GameEngine():
   def __init__(self):

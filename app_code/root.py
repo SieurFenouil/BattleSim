@@ -1,5 +1,5 @@
 
-from game_engine import GameEngine
+from .game_engine import GameEngine
 
 class Root :
   def __init__(self) :
