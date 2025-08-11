@@ -7,6 +7,11 @@
 import random
 import barracks.barracks as barracks
 
+class ArenaEnv:
+  def __init__(self):
+    self.combat_teams : list[CombatTeam] = []
+    self.biome : str = "0"
+
 class CombatEntity:
   def __init__(self, template):
     self.template : barracks.FighterTemplate = template
@@ -34,6 +39,10 @@ class CombatTeam:
 ###
 def speed_sort(unit_list : list[CombatEntity]) :
   unit_list.sort(key=lambda x: x.speed_meter, reverse=True)
+
+###
+def setup_battle(team1 : CombatTeam, team2 : CombatTeam):
+  ### ok
 
 ###
 def fight_battle(team1 : CombatTeam, team2 : CombatTeam):

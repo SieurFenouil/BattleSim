@@ -1,6 +1,8 @@
 
-import app_code.root as root
+from app_code.root import Root
 
 if __name__ == "__main__":
-    root.init()
-    root.run()
+    app = Root()
+    
+    app.init()
+    app.run()
