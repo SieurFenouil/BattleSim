@@ -8,8 +8,8 @@ runButton = "Project"
 
 [[workflows.workflow]]
 name = "Project"
-mode = "parallel"
-author = "me"
+author = 36919672
+mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
