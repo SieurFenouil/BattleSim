@@ -1,6 +1,7 @@
 
 import time
 from .game_engine import GameEngine
+from .game_engine import EngineStatusEnum
 
 class Root :
   def __init__(self) :
@@ -12,7 +13,10 @@ class Root :
     self.game.init()
   
   def run(self) :
-    while(1) :
+    i = 0
+    while(self.game.status == EngineStatusEnum.RUNNING) :
+      print(i)
+      i+=1
       # check for inputs
       self.game.check_inputs()
       # update game state
