@@ -26,3 +26,7 @@ class FighterTemplate:
         self.speed += 1
       elif (stat == 4 or stat == 5):
         self.max_hp += 10
+
+Alan = FighterTemplate("Alan")
+Alan.create_fighter()
+template_list = [Alan]
