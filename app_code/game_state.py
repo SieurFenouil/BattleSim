@@ -15,6 +15,8 @@ class GameState():
     self.state = GameStateEnum.SETUP
     self.arena_env = ArenaEnv()
 
+    print("init game state")
+
   def process_state_machine(self, command):
 
       # shitty transition just for now
@@ -30,7 +32,6 @@ class GameState():
             if(self.arena_env.fight_battle()):
               self.state = GameStateEnum.BATTLE_OVER
 
-      
           case GameStateEnum.BATTLE_OVER:
-            if(command == 0x0000):
+            if(command == 0x0001):
               self.state = GameStateEnum.SETUP

@@ -9,9 +9,11 @@ class Hmi():
 
   def request_inputs(self,state):
 
+    self.last_command = 0x0000
+
     match(state):
       case GameStateEnum.BATTLE_OVER:
-        input_str = input("press y to continue")
+        input_str = input("press y to continue \n")
         if (input_str == "y"):
-          self.last_command = 0x0000
-
+          print("you pressed y")
+          self.last_command = 0x0001
