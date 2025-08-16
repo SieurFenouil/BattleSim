@@ -15,10 +15,10 @@ class Root :
   def run(self) :
     i = 0
     while(self.game.status == EngineStatusEnum.RUNNING) :
-      print(i)
+      print("\n loop : ", i, "\n")
       i+=1
       # check for inputs
-      self.game.check_inputs()
+      self.game.request_inputs()
       # update game state
       self.game.update_game_state()
       # refresh display

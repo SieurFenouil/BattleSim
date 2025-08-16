@@ -15,7 +15,7 @@ class GameState():
     self.state = GameStateEnum.SETUP
     self.arena_env = ArenaEnv()
 
-  def process_state_machine(self, inputs):
+  def process_state_machine(self, command):
 
       # shitty transition just for now
       match self.state:
@@ -30,6 +30,7 @@ class GameState():
             if(self.arena_env.fight_battle()):
               self.state = GameStateEnum.BATTLE_OVER
 
-      # permanent battle over state just for now
-          case GameStateEnum.BATTLE:
-            print("battle over !!!!!")
+      
+          case GameStateEnum.BATTLE_OVER:
+            if(command == 0x0000):
+              self.state = GameStateEnum.SETUP
