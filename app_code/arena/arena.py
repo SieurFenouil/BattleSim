@@ -101,6 +101,4 @@ class ArenaEnv:
 def speed_sort(unit_list : list[CombatEntity]) :
   unit_list.sort(key=lambda x: x.speed_meter, reverse=True)
 
-###
-def setup_battle(team1 : CombatTeam, team2 : CombatTeam):
-    print("nothing here yet")
+
