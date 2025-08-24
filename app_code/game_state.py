@@ -10,6 +10,7 @@ class GameState():
   def init(self):
     self.state = GameStateEnum.SETUP
     self.arena_env = ArenaEnv()
+    self.arena_env.init()
 
     print("init game state")
 

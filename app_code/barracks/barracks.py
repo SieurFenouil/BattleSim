@@ -13,7 +13,7 @@ class FighterTemplate:
     self.speed : int = 1
     self.max_hp : int = 40
 
-  def create_fighter(self):
+  def init_fighter(self):
     upgrades_pool = 10
 
     for i in range(upgrades_pool):
@@ -26,7 +26,3 @@ class FighterTemplate:
         self.speed += 1
       elif (stat == 4 or stat == 5):
         self.max_hp += 10
-
-Alan = FighterTemplate("Alan")
-Alan.create_fighter()
-template_list = [Alan]
