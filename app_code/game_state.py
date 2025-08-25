@@ -1,10 +1,6 @@
-from enum import Enum
+from ._common_enums.common_enums import GameStateEnum
+from ._common_enums.common_enums import PlayerCommands
 from .arena.arena import ArenaEnv
-
-class GameStateEnum(Enum):
-    SETUP = 0           # barracks stuff ? team creation, level ups, all that
-    BATTLE = 1          # this is a battle
-    BATTLE_OVER = 2     # this is a battle finished
 
 class GameState():
   def __init__(self):
@@ -14,6 +10,7 @@ class GameState():
   def init(self):
     self.state = GameStateEnum.SETUP
     self.arena_env = ArenaEnv()
+    self.arena_env.init()
 
     print("init game state")
 
@@ -33,5 +30,5 @@ class GameState():
               self.state = GameStateEnum.BATTLE_OVER
 
           case GameStateEnum.BATTLE_OVER:
-            if(command == 0x0001):
+            if(command == PlayerCommands.BACK_TO_SETUP):
               self.state = GameStateEnum.SETUP

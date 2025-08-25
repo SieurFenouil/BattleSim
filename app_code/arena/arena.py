@@ -7,11 +7,12 @@
 
 import random
 
-from app_code.barracks import barracks
+from app_code.barracks.barracks import FighterTemplate
+from app_code.barracks.pregen_units import get_pregen_unit_database
 
 class CombatEntity:
   def __init__(self, template):
-    self.template : barracks.FighterTemplate = template
+    self.template : FighterTemplate = template
     self.team : CombatTeam = CombatTeam()
     self.alive : bool = True
     self.current_hp : int = self.template.max_hp
@@ -32,12 +33,15 @@ class CombatTeam:
 
 class ArenaEnv:
   def __init__(self):
+    self.pregen_unit_templates : dict[str, FighterTemplate] = {}
     self.combat_teams : list[CombatTeam] = []
     self.biome : str = "0"
-
+    
+  def init(self):
+    self.pregen_unit_templates = get_pregen_unit_database()
 
   def setup_battle(self):
-    unit1 = CombatEntity(barracks.template_list[0])
+    unit1 = CombatEntity(self.pregen_unit_templates["Goblin"])
     team1 = CombatTeam()
     team1.unit_list = [unit1]
     self.combat_teams = [team1]
@@ -50,7 +54,7 @@ class ArenaEnv:
 
     if len(battle_setlist) == 1 :
       battle_over = True
-      print("battle over !")
+      print("battle over !", battle_setlist[0].unit_list[0].template.name, "has won")
       return battle_over
 
     else :

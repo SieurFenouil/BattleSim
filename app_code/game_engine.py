@@ -1,5 +1,5 @@
 from .game_state import GameState
-from .hmi import Hmi
+from .interfaces.hmi import Hmi
 
 from enum import Enum
 
