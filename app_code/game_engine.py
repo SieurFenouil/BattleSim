@@ -30,6 +30,7 @@ class GameEngine():
   def update_game_state(self):
     print("update game state")
     self.game_state.process_state_machine(self.hmi.last_command)
+    self.game_state.update_saved_data()
 
   def refresh_display(self):
     print("refresh display")

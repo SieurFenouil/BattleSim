@@ -1,16 +1,19 @@
 from ._common_enums.common_enums import GameStateEnum
 from ._common_enums.common_enums import PlayerCommands
 from .arena.arena import ArenaEnv
+from .save_data_manager.save_data_manager import SaveDataManager
 
 class GameState():
   def __init__(self):
-    self.state = None
-    self.arena_env = None
+    self.state : GameStateEnum = None
+    self.arena_env : ArenaEnv = None
+    self.save_data_manager : SaveDataManager = None
 
   def init(self):
     self.state = GameStateEnum.SETUP
     self.arena_env = ArenaEnv()
     self.arena_env.init()
+    self.save_data_manager = SaveDataManager()
 
     print("init game state")
 
@@ -32,3 +35,6 @@ class GameState():
           case GameStateEnum.BATTLE_OVER:
             if(command == PlayerCommands.BACK_TO_SETUP):
               self.state = GameStateEnum.SETUP
+
+  def update_saved_data(self):
+    self.save_data_manager.check_and_save_all_data()

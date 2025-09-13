@@ -7,7 +7,8 @@ def get_pregen_unit_database()  -> dict[str, FighterTemplate]:
   
   return PREGEN_UNIT_DB
 
-goblin = FighterTemplate("Goblin")
+goblin = FighterTemplate()
+goblin.name = "Goblin"
 goblin.strength = 1
 goblin.agility = 4
 goblin.speed = 5
@@ -15,7 +16,8 @@ goblin.max_hp = 40
 
 PREGEN_UNIT_DB[goblin.name] = goblin
 
-bandit = FighterTemplate("Bandit")
+bandit = FighterTemplate()
+bandit.name = "Bandit"
 bandit.strength = 3
 bandit.agility = 2
 bandit.speed = 2
@@ -23,7 +25,8 @@ bandit.max_hp = 60
 
 PREGEN_UNIT_DB[bandit.name] = bandit
 
-giant = FighterTemplate("Giant")
+giant = FighterTemplate()
+giant.name = "Giant"
 giant.strength = 15
 giant.agility = 2
 giant.speed = 3

@@ -7,10 +7,11 @@
 
 import random
 
+from app_code.barracks.generic_classes import Saveable
 from app_code.barracks.barracks import FighterTemplate
 from app_code.barracks.pregen_units import get_pregen_unit_database
 
-class CombatEntity:
+class CombatEntity():
   def __init__(self, template):
     self.template : FighterTemplate = template
     self.team : CombatTeam = CombatTeam()

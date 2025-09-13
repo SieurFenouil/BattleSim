@@ -5,16 +5,28 @@
 
 import random
 
-class FighterTemplate:
-  def __init__(self, name):
-    self.name : str = name
+from app_code.barracks.generic_classes import GenericTemplate
+from app_code.barracks.generic_classes import Saveable
+
+class FighterTemplate(GenericTemplate, Saveable):
+  def __init__(self):
+    super().__init__()
+    self.strength : int = 0
+    self.agility : int = 0
+    self.speed : int = 0
+    self.max_hp : int = 0
+
+  #TODO init from a standard const array declared elsewhere rather than magic numbers here
+  def init(self, name : str):
+    super().init(name)
     self.strength : int = 1
     self.agility : int = 1
     self.speed : int = 1
     self.max_hp : int = 40
 
-  def init_fighter(self):
-    upgrades_pool = 10
+
+  def create_fighter(self):
+    upgrades_pool = 10 #TODO Magic numbers
 
     for i in range(upgrades_pool):
       stat = random.randint(1, 5)
