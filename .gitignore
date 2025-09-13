@@ -1,2 +1,9 @@
 
 *.pyc
+/.idea/BattleSim.iml
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/misc.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/dictionaries/project.xml
+/.idea/vcs.xml
+/.idea/workspace.xml
